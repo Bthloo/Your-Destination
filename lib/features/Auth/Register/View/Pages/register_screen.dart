@@ -122,6 +122,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
                 CustomFormField(
                     hintText: 'Enter Your password',
+                    isPassword : true,
                     validator: (value) => MyValidators.passwordValidator(value),
                     controller: passwordController),
                 const SizedBox(
@@ -129,6 +130,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
                 CustomFormField(
                     hintText: 'Enter password confirmation',
+                    isPassword : true,
                     validator: (value) => MyValidators.repeatPasswordValidator(
                         value: value, password: passwordController.text),
                     controller: rePasswordController),
