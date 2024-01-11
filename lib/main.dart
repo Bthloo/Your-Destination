@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:graduation_project/features/Auth/Login/View/Pages/login_screen.dart';
 import 'package:graduation_project/features/Auth/Register/View/Pages/register_screen.dart';
+import 'package:graduation_project/features/profile_screen/view/pages/trip_details_screen.dart';
 import 'package:graduation_project/features/splash/View/Pages/splash_screen.dart';
 import 'package:graduation_project/features/waiting_screen/View/pages/waiting_screen.dart';
 import 'package:graduation_project/firebase_options.dart';
@@ -50,7 +51,8 @@ class MyApp extends StatelessWidget {
           RegisterScreen.routeName : (_) => RegisterScreen(),
           LoginScreen.routeName : (_) => LoginScreen(),
           HomeScreen.routeName : (_) => HomeScreen(),
-          ProfileScreen.routeName : (_) => ProfileScreen()
+          ProfileScreen.routeName : (_) => ProfileScreen(),
+          TripDetailsScreen.routeName : (_) => TripDetailsScreen()
         },
       ),
     );

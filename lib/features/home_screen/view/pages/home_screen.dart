@@ -270,16 +270,16 @@ class _HomeScreenState extends State<HomeScreen> {
               mapToolbarEnabled: true,
               myLocationButtonEnabled: true,
               myLocationEnabled: true,
-              rotateGesturesEnabled: true,
+             // rotateGesturesEnabled: true,
               trafficEnabled: true,
-              tiltGesturesEnabled: true,
-              zoomControlsEnabled: true,
-              zoomGesturesEnabled: true,
-              scrollGesturesEnabled: true,
-              cameraTargetBounds: CameraTargetBounds(LatLngBounds(
-
-                  southwest: const LatLng(22.809394, 31.425691),
-                  northeast: const LatLng(31.563525,31.135726))),
+            //  tiltGesturesEnabled: true,
+            //  zoomControlsEnabled: true,
+            //  zoomGesturesEnabled: true,
+            //  scrollGesturesEnabled: true,
+            //   cameraTargetBounds: CameraTargetBounds(LatLngBounds(
+            //
+            //       southwest: const LatLng(22.809394, 31.425691),
+            //       northeast: const LatLng(31.563525,31.135726))),
               polylines: {
                 Polyline(
                     polylineId: const PolylineId('route'),
@@ -374,9 +374,12 @@ class _HomeScreenState extends State<HomeScreen> {
         type: LowerBody.selectedType,
         clientName: LoginCubit.currentUser?.name,
         clientPhoneNumber: LoginCubit.currentUser?.phoneNumber,
+        clientId: LoginCubit.currentUser?.id,
+        driverId: 'Not Assigned',
         driverName: 'Not Assigned',
         driverPhoneNumber: 'Not Assigned');
     MyDataBase.addRideRequest(rideRequest);
+    MyDataBase.addHistory(rideRequest: rideRequest, id:  LoginCubit.currentUser.id);
     DialogUtilities.hideDialog(context);
     Navigator.pushReplacementNamed(context, WaitingScreen.routeName,
         arguments: rideRequest);

@@ -15,6 +15,8 @@ import 'package:graduation_project/features/home_screen/view/pages/home_screen.d
 import 'package:lottie/lottie.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../Auth/Login/ViewModel/login_cubit.dart';
+
 class WaitingScreen extends StatelessWidget {
    WaitingScreen({super.key});
 static const String routeName = "WaitingScreen";
@@ -80,6 +82,7 @@ final TextEditingController notesController =  TextEditingController();
                       child: ElevatedButton(
                         onPressed: (){
                           MyDataBase.deleteTrip(arrgs.id!);
+                          MyDataBase.deleteHistory(rideRequest: snapshot.data!.data(), id: LoginCubit.currentUser.id);
                           Navigator.pushReplacementNamed(context,
                               HomeScreen.routeName);
                         },
@@ -100,7 +103,7 @@ final TextEditingController notesController =  TextEditingController();
                   snapshot.data?.data()?.destination?.latitude??0,
                   snapshot.data?.data()?.destination?.longitude??0
               );
-
+              MyDataBase.updateHistory(rideRequest: snapshot.data!.data(), id: LoginCubit.currentUser.id);
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Center(
@@ -187,6 +190,9 @@ final TextEditingController notesController =  TextEditingController();
 
             }
             else if(snapshot.data?.data()?.state == 'Complete'){
+              MyDataBase.updateHistory(rideRequest: snapshot.data!.data(), id: LoginCubit.currentUser.id);
+              MyDataBase.updateDriverHistory(rideRequest: snapshot.data!.data(),id:snapshot.data?.data()?.driverId );
+
               return Center(
                 child: Padding(
                     padding: const EdgeInsets.all(10),
